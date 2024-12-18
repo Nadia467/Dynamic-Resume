@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Dynamic Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+    <div>
+        <h1> Dynamic Resume Builder</h1>
+
+                                          <!-- resume foam -->
+        <form id="resume-form">
+
+            <!-- Personal Details -->
+            <fieldset>
+                <legend>Personal Details</legend><br>
+                <label>Full Name:</label><br>
+                <input type="text" class="input" id="name" name="name" placeholder="Enter your name" required><br><br>
+                <label>Email:</label><br>
+                <input type="email" class="input" id="email" name="email" placeholder="Enter your email" required><br><br>
+                <label>Phone:</label><br>
+                <input type="tel" class="input" id="phone" name="phone" placeholder="Enter your number" required><br><br>
+                <label>Address:</label><br>
+                <input type="text" class="input" id="address" name="address" placeholder="Enter your adress"><br><br>
+            </fieldset>
+    
+            <!-- Work Experience -->
+            <fieldset>
+                <legend>Work Experience</legend><br>
+                <label>Job Title:</label><br>
+                <input type="text" class="input" id="job-title" name="job-title" placeholder="Enter job title" required><br><br>
+                <label>Company:</label><br>
+                <input type="text" class="input" id="company" name="company" placeholder="Enter company" required><br><br>
+                <label>Duration:</label><br>
+                <input type="text" class="input" id="duration" name="duration" placeholder="Enter duration" required><br><br>
+                <label>Description:</label><br>
+                <textarea type="text" id="description" name="description"></textarea><br><br>
+            </fieldset>
+    
+            <!-- Education -->
+            <fieldset>
+                <legend>Education</legend><br>
+                <label>Degree:</label><br>
+                <input type="text" class="input" id="degree" name="degree" placeholder="Enter degree" required><br><br>
+                <label>Institution:</label><br>
+                <input type="text" class="input" id="institution" name="institution" placeholder="Enter institution" required><br><br>
+                <label>Year:</label><br>
+                <input type="text" class="input" id="year" name="year" placeholder="Enter duration" required><br><br>
+            </fieldset>
+    
+            <!-- Skills -->
+            <fieldset>
+                <legend>Skills</legend><br>
+                <label>Programming Languages:</label><br>
+                <input type="text" class="input" id="programming-languages" name="programming-languages" placeholder="HTMT,CSS,JAVASCRIPT,TYPESCRITY"><br><br>
+                <label>Other Languages:</label><br>
+                <input type="text" class="input" id="other-languages" name="other-languages" placeholder="Enter languages">
+            </fieldset>
+    
+            <!-- upload photo -->
+            <!-- <label id="upload-photo" for="photo">upload photo</label>
+            <input type="file" id="photo" name="photo" required><br> -->
+    
+            <!-- Generated Resume button -->
+            <button type="submit">Generate Resume</button>
+        </form>
+    
+    
+                                                      <!-- for resume page-->
+        <div id="resume-page" class="hidden">
+            <div id="resume-content">
+                
+                <!-- about information -->
+                <!-- <img id="resume-photo" src="" alt="photo"> -->
+                <h1 id="resume-name"></h1>
+                <p id="resume-email"></p>
+                <p id="resume-phone"></p>
+                <p id="resume-address"></p>
+                
+                <!-- experience -->
+                <h2>Work Experience</h2>
+                <p id="job-title"></p>
+                <p id="company"></p>
+                <p id="duration"></p>
+                <p id="discription"></p>
+
+                 <!-- education -->
+                <h2>Education</h2>
+                <p id="resume-edu"></p>
+                <p id="degree"></p>
+                <p id="institution"></p>
+                <p id="year"></p>
+
+                 <!-- about skills -->
+                <h2>Skills</h2>
+                <p id="programming-languages"></p>
+                <p id="other-languages"></p>
+            </div>
+            <!-- page button -->
+            <!-- <button id="edit-button">Edit</button>
+            <button id="back-button" onclick="window.location.href='main.html'">Back to form</button>
+            <button id="share-link-button">Share your resume</button>
+            <button id="download-pdf">Download</button> -->
+        </div>
+    </div>
+ </body>
+</html>

@@ -1,0 +1,104 @@
+body{
+    font-family: sans-serif;
+    background-color: #d0f354;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+#resume-page {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#resume-content h2 {
+    color: #053e58;
+    border-bottom: 2px solid #a7350f;
+    padding-bottom: 5px;
+    margin-top: 15px;
+}
+
+#resume-content p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+label{
+    font-size: 20px;
+    display: block;
+}
+h1 {
+    font-style: italic;
+    font-family: sans-serif;
+    color: #a7350f;
+    font-size: 35px;
+    text-align: center;
+    margin: 0;
+}
+div{
+    background-color: white;
+    width: 45%;
+}
+.input{
+    width:98% ;
+    border-radius: 10px;
+    height: 25px;
+    border-color: #a7350f;
+    box-shadow: 0 0 20px #966b5d;
+
+}
+textarea{
+    height: 100px;
+    border-radius: 10px;
+    width: 98%;
+    border-color: #a7350f;
+    box-shadow: 0 0 20px #966b5d;
+}
+fieldset {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #a7350f;
+    border-radius: 10px;
+}
+legend {
+    font-size: 25px;
+    font-weight: bold;
+    color: #053e58;
+    padding: 0 10px;
+}
+#upload-photo{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+#photo{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+button {
+    margin: 20px;
+    border-radius: 7px;
+    padding: 10px 20px;
+    background-color: #053e58;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #b8bbaa;
+    color: #053e58;
+}
+.input:focus, textarea:focus {
+    outline: none;
+    border-color: #053e58;
+    box-shadow: 0 0 10px #053e58;
+}
+.hidden {
+    display: none;
+}
