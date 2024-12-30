@@ -1,4 +1,4 @@
-(function() {
+(function () {
   // Helper to get elements with proper type casting
   function getElement<T extends HTMLElement>(id: string): T {
     const element = document.getElementById(id) as T;
@@ -9,9 +9,9 @@
   const resumeForm = getElement<HTMLFormElement>('resume-form');
   const resumePage = getElement<HTMLDivElement>('resume-page');
   const resumeName = getElement<HTMLHeadingElement>('resume-name');
-  const resumeEmail = getElement<HTMLParagraphElement>('resume-email');
-  const resumePhone = getElement<HTMLParagraphElement>('resume-phone');
-  const resumeAddress = getElement<HTMLParagraphElement>('resume-address');
+  const resumeEmail = getElement<HTMLSpanElement>('resume-email');
+  const resumePhone = getElement<HTMLSpanElement>('resume-phone');
+  const resumeAddress = getElement<HTMLSpanElement>('resume-address');
   const photoInput = getElement<HTMLInputElement>('photo');
   const photoPreview = getElement<HTMLImageElement>('resume-photo');
 
@@ -27,66 +27,57 @@
   const programmingLanguagesElement = getElement<HTMLSpanElement>('resume-programming-languages');
   const otherLanguagesElement = getElement<HTMLSpanElement>('resume-other-languages');
 
-  // Handle photo upload
-  photoInput.addEventListener('change', () => {
-    const file = photoInput.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        photoPreview.src = reader.result as string;
-      };
-      reader.readAsDataURL(file);
-    }
-  });
+  // Function to handle input changes
+  function updateResume() {
+    const name = (getElement<HTMLInputElement>('name') as HTMLInputElement).value;
+    const email = getElement<HTMLInputElement>('email').value;
+    const phone = getElement<HTMLInputElement>('phone').value;
+    const address = getElement<HTMLInputElement>('address').value;
+    const photoFile = photoInput.files?.[0];
 
-  // Validate name
-  function validateName(name: string): boolean {
-    const nameRegex = /^[A-Za-z]{1,10}$/;
-    return nameRegex.test(name);
+    const jobTitle = getElement<HTMLInputElement>('job-title').value;
+    const company = getElement<HTMLInputElement>('company').value;
+    const duration = getElement<HTMLInputElement>('duration').value;
+    const description = getElement<HTMLTextAreaElement>('description').value;
+
+    const degree = getElement<HTMLInputElement>('degree').value;
+    const institution = getElement<HTMLInputElement>('institution').value;
+    const year = getElement<HTMLInputElement>('year').value;
+
+    const programmingLanguages = getElement<HTMLInputElement>('programming-languages').value;
+    const otherSkills = getElement<HTMLInputElement>('other-languages').value;
+
+    // Update Resume
+    resumeName.textContent = name;
+    resumeEmail.textContent = email;
+    resumePhone.textContent = phone;
+    resumeAddress.textContent = address;
+
+    // Display photo preview
+    if (photoFile) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        photoPreview.src = e.target?.result as string;
+      };
+      reader.readAsDataURL(photoFile);
+    }
+
+    jobTitleElement.textContent = jobTitle;
+    companyElement.textContent = company;
+    durationElement.textContent = duration;
+    descriptionElement.textContent = description;
+
+    degreeElement.textContent = degree;
+    institutionElement.textContent = institution;
+    yearElement.textContent = year;
+
+    programmingLanguagesElement.textContent = programmingLanguages;
+    otherLanguagesElement.textContent = otherSkills;
+
+    // Show resume page
+    resumePage.classList.remove('hidden');
   }
 
-  // Handle form submission
-  resumeForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(resumeForm);
-    const name = formData.get('name') as string;
-
-    if (!validateName(name)) {
-      alert('Name must be alphabetic and up to 10 characters long.');
-      return;
-    }
-
-    // Form Data
-    const fullName = (document.getElementById('name') as HTMLInputElement).value;
-    const email = (document.getElementById('email') as HTMLInputElement).value;
-    const phone = (document.getElementById('phone') as HTMLInputElement).value;
-    const address = (document.getElementById('address') as HTMLInputElement).value;
-    const jobTitle = (document.getElementById('job-title') as HTMLInputElement).value;
-    const company = (document.getElementById('company') as HTMLInputElement).value;
-    const duration = (document.getElementById('duration') as HTMLInputElement).value;
-    const description = (document.getElementById('description') as HTMLInputElement).value;
-    const degree = (document.getElementById('degree') as HTMLInputElement).value;
-    const institution = (document.getElementById('institution') as HTMLInputElement).value;
-    const year = (document.getElementById('year') as HTMLInputElement).value;
-    const programmingLanguages = (document.getElementById('programming-languages') as HTMLInputElement).value;
-    const otherLanguages = (document.getElementById('other-languages') as HTMLInputElement).value;
-  // Display Resume Data
-  resumeName.textContent = fullName;
-  resumeEmail.textContent = email;
-  resumePhone.textContent = phone;
-  resumeAddress.textContent = address;
-  jobTitleElement.textContent = jobTitle;
-  companyElement.textContent = company;
-  durationElement.textContent = duration;
-  descriptionElement.textContent = description;
-  degreeElement.textContent = degree;
-  institutionElement.textContent = institution;
-  yearElement.textContent = year;
-  programmingLanguagesElement.textContent = 'Programming Languages: ' + programmingLanguages;
-  otherLanguagesElement.textContent = 'Other Languages: ' + otherLanguages;
-
-  resumePage.classList.remove('hidden'); // Show the resume page
-  });
-  resumePage.style.display = 'block';
+  // Attach event listeners to input fields
+  resumeForm.addEventListener('input', updateResume);
 })();

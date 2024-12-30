@@ -1,120 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Resume Builder</title>
+    <title>Editable Resume</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Rye&family=Spicy+Rice&family=Ultra&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Rye&family=Spicy+Rice&family=Ultra&display=swap"
+        rel="stylesheet">
+</head>
+
 <body>
-    <video class="video" autoplay mutep >
+    <video class="video" autoplay muted loop>
         <source src="public/videos/whatsapp.mp4" type="video/mp4">
         <source src="public/videos/whatsapp.mp4" type="video/webm">
         <source src="public/videos/whatsapp.mp4" type="video/ogg">
     </video>
-    <div class="container">
-        <!-- Resume foam -->
-        <form id="resume-form">
-            <h1>Dynamic Resume Builder</h1>
+    <div id="resume">
 
-            <!-- Personal Details -->
-            <fieldset>
-                <legend>Personal Details</legend>
-                <label for="name">Full Name:</label>
-                <input type="text" id="name" placeholder="Enter your name" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" placeholder="Enter your email" required>
-                
-                <label for="phone">Phone:</label>
-                <input type="tel" id="phone" placeholder="Enter your phone number" required>
-                
-                <label for="address">Address:</label>
-                <input type="text" id="address" placeholder="Enter your address">
+        <div class="container">
+            <!-- Resume Form -->
+            <form id="resume-form">
+                <h1>Dynamic  Resume  Builder</h1>
+                <fieldset>
+                    <legend>Personal Details</legend>
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
 
-                <label for="photo">Upload Photo:</label>
-                <input type="file" id="photo" accept="image/*" required>
-            </fieldset>
-            
-            <!-- Work Experience -->
-            <fieldset>
-                <legend>Work Experience</legend>
-                <label for="job-title">Job Title:</label>
-                <input type="text" id="job-title" placeholder="Enter job title" required>
-                
-                <label for="company">Company:</label>
-                <input type="text" id="company" placeholder="Enter company" required>
-                
-                <label for="duration">Duration:</label>
-                <input type="text" id="duration" placeholder="Enter duration" required>
-                
-                <label for="description">Description:</label>
-                <textarea id="description" placeholder="Enter job description"></textarea>
-            </fieldset>
-            
-            <!-- Education -->
-            <fieldset>
-                <legend>Education</legend>
-                <label for="degree">Degree:</label>
-                <input type="text" id="degree" placeholder="Enter degree" required>
-                
-                <label for="institution">Institution:</label>
-                <input type="text" id="institution" placeholder="Enter institution" required>
-                
-                <label for="year">Year:</label>
-                <input type="text" id="year" placeholder="Enter graduation year" required>
-            </fieldset>
-            
-            <!-- Skills -->
-            <fieldset>
-                <legend>Skills</legend>
-                <label for="programming-languages">Programming Languages:</label>
-                <input type="text" id="programming-languages" placeholder="e.g., HTML, CSS, JavaScript">
-                
-                <label for="other-languages">Other Skills:</label>
-                <input type="text" id="other-languages" placeholder="e.g., Communication, Management">
-            </fieldset>
-            
-            <button type="submit">Generate Resume</button>
-        </form><br><br>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
 
-        <!-- resume page -->
-        <div id="resume-page" class="hidden">
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" placeholder="Enter your phone number" required>
 
-            <!-- Photo -->
-            <div id="photo-container">
-                <img id="resume-photo" src="" alt="Profile Photo" />
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" placeholder="Enter your address">
+
+                    <label for="photo">Upload Photo:</label>
+                    <input type="file" id="photo" accept="image/*" required>
+                </fieldset>
+                <fieldset>
+                    <legend>Work Experience</legend>
+                    <label for="job-title">Job Title:</label>
+                    <input type="text" id="job-title" placeholder="Enter job title" required>
+
+                    <label for="company">Company:</label>
+                    <input type="text" id="company" placeholder="Enter company" required>
+
+                    <label for="duration">Duration:</label>
+                    <input type="text" id="duration" placeholder="Enter duration" required>
+
+                    <label for="description">Description:</label>
+                    <textarea id="description" placeholder="Enter job description"></textarea>
+                </fieldset>
+                <fieldset>
+                    <legend>Education</legend>
+                    <label for="degree">Degree:</label>
+                    <input type="text" id="degree" placeholder="Enter degree" required>
+
+                    <label for="institution">Institution:</label>
+                    <input type="text" id="institution" placeholder="Enter institution" required>
+
+                    <label for="year">Year:</label>
+                    <input type="text" id="year" placeholder="Enter graduation year" required>
+                </fieldset>
+                <fieldset>
+                    <legend>Skills</legend>
+                    <label for="programming-languages">Programming Languages:</label>
+                    <input type="text" id="programming-languages" placeholder="e.g., HTML, CSS, JavaScript">
+
+                    <label for="other-languages">Other Skills:</label>
+                    <input type="text" id="other-languages" placeholder="e.g., Communication, Management">
+                </fieldset>
+                <!-- <button type="submit">Generate Resume</button> -->
+            </form>
+        </div><br><br>
+
+
+        <div class="container">
+            <!-- Editable Resume Section -->
+            <div id="resume-page" class="hidden">
+                <div id="photo-container">
+                    <img id="resume-photo" src="" alt="Profile Photo" />
+                </div>
+                <h1 id="resume-name" contenteditable="true"></h1>
+
+                <h2>Personal Details</h2>
+                <p><strong>Email:</strong> <span id="resume-email" contenteditable="true"></span></p>
+                <p><strong>Phone:</strong> <span id="resume-phone" contenteditable="true"></span></p>
+                <p><strong>Address:</strong> <span id="resume-address" contenteditable="true"></span></p>
+
+                <h2>Work Experience</h2>
+                <p><strong>Job Title:</strong> <span id="resume-job-title" contenteditable="true"></span></p>
+                <p><strong>Company:</strong> <span id="resume-company" contenteditable="true"></span></p>
+                <p><strong>Duration:</strong> <span id="resume-duration" contenteditable="true"></span></p>
+                <p><strong>Description:</strong> <span id="resume-description" contenteditable="true"></span></p>
+
+                <h2>Education</h2>
+                <p><strong>Degree:</strong> <span id="resume-degree" contenteditable="true"></span></p>
+                <p><strong>Institution:</strong> <span id="resume-institution" contenteditable="true"></span></p>
+                <p><strong>Year:</strong> <span id="resume-year" contenteditable="true"></span></p>
+
+                <h2>Skills</h2>
+                <p><strong>Programming Languages:</strong> <span id="resume-programming-languages"
+                        contenteditable="true"></span>
+                </p>
+                <p><strong>Other Skills:</strong> <span id="resume-other-languages" contenteditable="true"></span></p>
             </div>
-
-            <!-- Personal Details -->
-            <h1 id="resume-name"></h1>
-            <h2>Personal details</h2>
-            <p><strong>Email:</strong> <span id="resume-email"></span></p>
-            <p><strong>Phone:</strong> <span id="resume-phone"></span></p>
-            <p><strong>Address:</strong> <span id="resume-address"></span></p>
-            
-            <!-- Work Experience -->
-            <h2>Work Experience</h2>
-            <p><strong>Job Title:</strong> <span id="resume-job-title"></span></p>
-            <p><strong>Company:</strong> <span id="resume-company"></span></p>
-            <p><strong>Duration:</strong> <span id="resume-duration"></span></p>
-            <p><strong>Description:</strong> <span id="resume-description"></span></p>
-            
-            <!-- Education -->
-            <h2>Education</h2>
-            <p><strong>Degree:</strong> <span id="resume-degree"></span></p>
-            <p><strong>Institution:</strong> <span id="resume-institution"></span></p>
-            <p><strong>Year:</strong> <span id="resume-year"></span></p>
-            
-            <!-- Skills -->
-            <h2>Skills</h2>
-            <p><strong>Programming Languages:</strong> <span id="resume-programming-languages"></span></p>
-            <p><strong>Other Skills:</strong> <span id="resume-other-languages"></span></p>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
+
 </html>

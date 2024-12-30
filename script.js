@@ -23,51 +23,37 @@
     var yearElement = getElement('resume-year');
     var programmingLanguagesElement = getElement('resume-programming-languages');
     var otherLanguagesElement = getElement('resume-other-languages');
-    // Handle photo upload
-    photoInput.addEventListener('change', function () {
+    // Function to handle input changes
+    function updateResume() {
         var _a;
-        var file = (_a = photoInput.files) === null || _a === void 0 ? void 0 : _a[0];
-        if (file) {
-            var reader_1 = new FileReader();
-            reader_1.onload = function () {
-                photoPreview.src = reader_1.result;
-            };
-            reader_1.readAsDataURL(file);
-        }
-    });
-    // Validate name
-    function validateName(name) {
-        var nameRegex = /^[A-Za-z]{1,10}$/;
-        return nameRegex.test(name);
-    }
-    // Handle form submission
-    resumeForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-        var formData = new FormData(resumeForm);
-        var name = formData.get('name');
-        if (!validateName(name)) {
-            alert('Name must be alphabetic and up to 10 characters long.');
-            return;
-        }
-        // Form Data
-        var fullName = document.getElementById('name').value;
-        var email = document.getElementById('email').value;
-        var phone = document.getElementById('phone').value;
-        var address = document.getElementById('address').value;
-        var jobTitle = document.getElementById('job-title').value;
-        var company = document.getElementById('company').value;
-        var duration = document.getElementById('duration').value;
-        var description = document.getElementById('description').value;
-        var degree = document.getElementById('degree').value;
-        var institution = document.getElementById('institution').value;
-        var year = document.getElementById('year').value;
-        var programmingLanguages = document.getElementById('programming-languages').value;
-        var otherLanguages = document.getElementById('other-languages').value;
-        // Display Resume Data
-        resumeName.textContent = fullName;
+        var name = getElement('name').value;
+        var email = getElement('email').value;
+        var phone = getElement('phone').value;
+        var address = getElement('address').value;
+        var photoFile = (_a = photoInput.files) === null || _a === void 0 ? void 0 : _a[0];
+        var jobTitle = getElement('job-title').value;
+        var company = getElement('company').value;
+        var duration = getElement('duration').value;
+        var description = getElement('description').value;
+        var degree = getElement('degree').value;
+        var institution = getElement('institution').value;
+        var year = getElement('year').value;
+        var programmingLanguages = getElement('programming-languages').value;
+        var otherSkills = getElement('other-languages').value;
+        // Update Resume
+        resumeName.textContent = name;
         resumeEmail.textContent = email;
         resumePhone.textContent = phone;
         resumeAddress.textContent = address;
+        // Display photo preview
+        if (photoFile) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var _a;
+                photoPreview.src = (_a = e.target) === null || _a === void 0 ? void 0 : _a.result;
+            };
+            reader.readAsDataURL(photoFile);
+        }
         jobTitleElement.textContent = jobTitle;
         companyElement.textContent = company;
         durationElement.textContent = duration;
@@ -75,9 +61,11 @@
         degreeElement.textContent = degree;
         institutionElement.textContent = institution;
         yearElement.textContent = year;
-        programmingLanguagesElement.textContent = 'Programming Languages: ' + programmingLanguages;
-        otherLanguagesElement.textContent = 'Other Languages: ' + otherLanguages;
-        resumePage.classList.remove('hidden'); // Show the resume page
-    });
-    resumePage.style.display = 'block';
+        programmingLanguagesElement.textContent = programmingLanguages;
+        otherLanguagesElement.textContent = otherSkills;
+        // Show resume page
+        resumePage.classList.remove('hidden');
+    }
+    // Attach event listeners to input fields
+    resumeForm.addEventListener('input', updateResume);
 })();
